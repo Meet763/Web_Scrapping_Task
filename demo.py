@@ -59,17 +59,17 @@ try:
     password_input = driver.find_element(By.NAME, "password")
     password_input.send_keys(password)
     password_input.send_keys(Keys.RETURN)
-    time.sleep(5)  # Wait for login to complete
+    time.sleep(10)  # Wait for login to complete
 
     # # Step 5: Navigate to the Trending Page
     driver.get("https://x.com/explore/tabs/trending")
-    time.sleep(15)  # Wait for the page to load
+    time.sleep(10)  # Wait for the page to load
 
     # Step 6: Extract Trending Topics
     trending_elements = driver.find_elements(By.CSS_SELECTOR, "div[data-testid='trend'] span span")
     
     # Extract the top 5 trending topics
-    trending_topics = [element.text for element in trending_elements[:4] if element.text.strip()]
+    trending_topics = [element.text for element in trending_elements[:5] if element.text.strip()]
 
     # If no trending topics found, return an empty list
     if not trending_topics:
