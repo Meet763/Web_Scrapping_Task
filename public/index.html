@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Topics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trending Topics</h1>
+    <button id="run-script-btn">Click here to run the query</button>
+    
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('run-script-btn').addEventListener('click', function() {
+            fetch('/run-script')
+                .then(response => response.text())
+                .then(data => {
+                    // Display the result in the result div
+                    document.getElementById('result').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('result').innerHTML = 'There was an error running the script.';
+                });
+        });
+    </script>
+</body>
+</html>
